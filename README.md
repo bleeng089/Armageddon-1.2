@@ -3,8 +3,7 @@
 
 
 # Armageddon Project
-
-
+# Architecture Diagram: [text](https://lucid.app/lucidchart/13304afe-7041-47cb-accd-bc86b73cc645/edit?viewport_loc=-3750%2C-3853%2C7225%2C3438%2C0_0&invitationId=inv_4a28dc03-a6c4-4121-9ee8-3d04d2b28ba8)
 
 
 
