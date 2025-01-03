@@ -24,21 +24,8 @@ output "subnet4_id" {
   description = "The ID of subnet 4"
   value       = module.vpc_japan.subnet4_id
 }
-
-# Output the Security group IDs from the infrastructure child module
-output "security_group-servers" {
-  description = "The ID of the servers security group"
-  value       = module.infrastructure_japan.security_group-servers
-}
-
-output "security_group-lb" {
-  description = "The ID of the load balancer security group"
-  value       = module.infrastructure_japan.security_group-lb
-}
-
-
 # Output the ALB DNS from the infrastructure child module
-output "ALB-DNS" {
+output "ALB-DNS-japan" {
   description = "The ID of the ALB DNS"
   value = module.infrastructure_japan.ALB-DNS
 }
@@ -46,15 +33,19 @@ output "ALB-DNS-NewYork" {
   description = "The ID of the ALB DNS"
   value = module.infrastructure_NewYork.ALB-DNS
 }
-
-# Output the private key from the infrastructure child module
-output "private_key-japan" { #bash "terraform output private_key-japan"  to print to standard output
-  description = "The private key in PEM format"
-  value       = module.infrastructure_japan.private_key
-  sensitive   = true
+output "ALB-DNS-Brazil" {
+  description = "The ID of the ALB DNS"
+  value = module.infrastructure_Brazil.ALB-DNS
 }
-output "private_key-NewYork" {
-  description = "The private key in PEM format"
-  value       = module.infrastructure_NewYork.private_key
-  sensitive   = true
+output "ALB-DNS-Sydney" {
+  description = "The ID of the ALB DNS"
+  value = module.infrastructure_Sydney.ALB-DNS
+}
+output "ALB-DNS-HongKong" {
+  description = "The ID of the ALB DNS"
+  value = module.infrastructure_HongKong.ALB-DNS
+}
+output "ALB-DNS-Cali" {
+  description = "The ID of the ALB DNS"
+  value = module.infrastructure_Cali.ALB-DNS
 }

@@ -108,7 +108,7 @@ variable "dependency_trigger" {
   } 
 resource "null_resource" "dependency" { 
   triggers = {
-    always_run = "${var.dependency_trigger}" 
+    always_run = "${var.dependency_trigger}" #null resource depends on how the value-pair of the  variable "dependency_trigger" 
     } 
 }
 
@@ -136,7 +136,7 @@ data "template_file" "user_data" {
 resource "aws_launch_template" "app1" { 
   name_prefix   = "app1-J-Tele-Doctor_LT"
   image_id      = data.aws_ami.latest_amazon_linux_image.id  
-  instance_type = "t2.micro"
+  instance_type = "t3.nano"
 
   key_name = aws_key_pair.key.key_name
 
@@ -155,7 +155,7 @@ resource "aws_launch_template" "app1" {
   lifecycle {
     create_before_destroy = true
   }
-  depends_on = [ null_resource.dependency]
+  depends_on = [ null_resource.dependency] #launch template depends on the null resource
 }
 ################################################################################
 # Target Group

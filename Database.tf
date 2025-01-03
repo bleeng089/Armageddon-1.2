@@ -1,10 +1,15 @@
-resource "aws_secretsmanager_secret" "db_admin_password" { #Manages secret
+
+/*resource "aws_secretsmanager_secret" "db_admin_password" { #Creates managed secret
   name        = "dbAdminPassword"
   description = "Admin password for RDS instance"
   kms_key_id  = "alias/aws/secretsmanager"  # default KMS key for RDS. The secret is encrypted using this KMS Key. This KMS Key encryts the Data Encryption Key (DEK). The DEK is used to encrypt the secret data. 
+}*/
+data "aws_secretsmanager_secret" "existing_db_admin_password" { #References managed secret
+  name = "dbAdminPassword" 
 }
+
 resource "aws_secretsmanager_secret_version" "db_admin_password_version" { # creates different versions of the secret data. The secret data is the JSON encoded username and password.
-  secret_id     = aws_secretsmanager_secret.db_admin_password.id
+  secret_id     = data.aws_secretsmanager_secret.existing_db_admin_password.id
   secret_string = jsonencode({
     username = "admin"
     password = random_password.db_admin_password.result
