@@ -28,7 +28,7 @@ resource "aws_rds_cluster" "aurora_cluster" { #the container for the database in
   engine_version          = "8.0.mysql_aurora.3.05.2" #bash aws rds describe-db-engine-versions
   master_username         = jsondecode(aws_secretsmanager_secret_version.db_admin_password_version.secret_string)["username"] #bash aws secretsmanager get-secret-value --secret-id dbAdminPassword --query SecretString --output text
   master_password         = jsondecode(aws_secretsmanager_secret_version.db_admin_password_version.secret_string)["password"]
-  # Lines 26 and 27: 1-Access the secret data stored in AWS Secrets Manager. 2-Use jsondecode to convert the JSON-encoded secret string into a map(similar to a dictionary). 3-Extract the "username" and "password" from the map.
+  # Lines 29 and 30: 1-Access the secret data stored in AWS Secrets Manager. 2-Use jsondecode to convert the JSON-encoded secret string into a map(similar to a dictionary). 3-Extract the "username" and "password" from the map.
   vpc_security_group_ids  = [aws_security_group.Aurora-japan.id]
   db_subnet_group_name    = aws_db_subnet_group.db_subnet_group.name
   allow_major_version_upgrade = true
